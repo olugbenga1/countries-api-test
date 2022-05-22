@@ -12,17 +12,36 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.countryByName = exports.countriesByRegion = exports.allCountries = void 0;
 const axios_1 = __importDefault(require("axios"));
-function getCountries() {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            const response = yield axios_1.default.get("https://restcountries.com/v3.1/all");
-            console.log(response);
-        }
-        catch (error) {
-            console.error(error);
-        }
-    });
-}
-getCountries();
-exports.default = { getCountries };
+const allCountries = () => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const response = yield axios_1.default.get("https://restcountries.com/v3.1/all");
+        return response.data;
+    }
+    catch (error) {
+        console.error(error);
+    }
+});
+exports.allCountries = allCountries;
+const countriesByRegion = () => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const response = yield axios_1.default.get("https://restcountries.com/v3.1/region/europe");
+        return response.data;
+    }
+    catch (error) {
+        console.error(error);
+    }
+});
+exports.countriesByRegion = countriesByRegion;
+const countryByName = () => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const response = yield axios_1.default.get("https://restcountries.com/v3.1/name/nigeria");
+        return response.data;
+    }
+    catch (error) {
+        console.error(error);
+    }
+});
+exports.countryByName = countryByName;
+(0, exports.countriesByRegion)();

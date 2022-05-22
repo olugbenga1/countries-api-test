@@ -1,14 +1,33 @@
 import axios from "axios";
 
-async function getCountries() {
+export const allCountries = async () => {
   try {
     const response = await axios.get("https://restcountries.com/v3.1/all");
-    console.log(response);
+    return response.data;
   } catch (error) {
     console.error(error);
   }
-}
+};
 
-getCountries();
+export const countriesByRegion = async () => {
+  try {
+    const response = await axios.get(
+      "https://restcountries.com/v3.1/region/europe"
+    );
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
 
-export default { getCountries };
+export const countryByName = async () => {
+  try {
+    const response = await axios.get(
+      "https://restcountries.com/v3.1/name/nigeria"
+    );
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+countriesByRegion();
